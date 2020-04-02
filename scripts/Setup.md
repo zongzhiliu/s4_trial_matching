@@ -64,7 +64,7 @@ function pgsetup {
 4. Safe your changes and run `source .bash_profile`
 
 ### Step 3: Prepare for the pgpass file 
-1. Create file *.pgpass_rdmsdw*, *.pgpass_rimsdw*
+1. Create file `.pgpass_rdmsdw`, `.pgpass_rimsdw`
 2. In each file, add following code:
 ```
 127.0.0.1:9998:{database_name}:{user_name}:{yourpassword}
