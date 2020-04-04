@@ -36,8 +36,8 @@ limit 100;
 create table _crit_logic as
 with tmp as (
     select attribute_id, logic
-    , split_part(logic, '.', 1) p1
-    , split_part(logic, '.', 2) p2
+    , split_part(logic, '/', 1) p1
+    , split_part(logic, '/', 2) p2
     from crit_attribute_used
 )
 select attribute_id, logic
@@ -72,7 +72,11 @@ with _crit_l2 as (
     group by trial_id, person_id, logic_l1, logic_l2
 )
 select trial_id, person_id, logic_l1
-, bool_or(l2_match) l1_match
+, case 
+	when split_part(logic_l1, '.', 2) = 'or' then bool_or(l2_match)
+	when split_part(logic_l1, '.', 2) = 'and' then bool_and(l2_match)
+    when split_part(logic_l1, '.', 2) = '' then bool_or(l2_match)
+, l1_match
 from _crit_l2
 group by trial_id, person_id, logic_l1
 ;
