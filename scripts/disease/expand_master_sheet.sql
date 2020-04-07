@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 -- run on the pharma server
+=======
+/* run on the pharma server
+ Requires: working_schema, logic_cols
+    , v_crit_attribute_used_new, v_master_sheet_n
+*/
+>>>>>>> 6f6e4b23d63baa5ac94d790dbcfcddfb0d70d53b
 use db_data_bridge;
 
 create index i_${disease}_v_master_sheet_n__n
