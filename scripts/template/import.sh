@@ -7,20 +7,22 @@
 # need run config file before continue
 # source uc/config.sh
 
+# Set up workspace
 source util/util.sh
 pgsetup rdmsdw
 psql -c "create schema if not exists ${working_schema}"
-# Set up workspace
+
+# The following steps may varies for different diseases.
 
 # prepare references
 #cd ${working_dir}
 #load_into_db_schema_some_csvs.py rdmsdw ct ref_proc_mapping_20200325.csv
 #load_into_db_schema_some_csvs.py rdmsdw ct ref_rx_mapping_20200325.csv
-#cd -
+
 psql_w_envs disease/prepare_reference.sql
 
 # prepare attribute
-ipython ${working_schema}/load_attribute.ipy
+ipython ${working_schema}/load_attribute.ipy 
 psql_w_envs cancer/prepare_attribute.sql
 
 # prepare patient data

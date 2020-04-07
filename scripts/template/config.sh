@@ -17,7 +17,8 @@ export ref_rx_mapping=ct.ref_rx_mapping_20200325
 export working_dir="$HOME/Sema4/rdmsdw/${disease}"
 export script_dir="$HOME/git/trial_matching/scripts"
 
-# AOF value config
+# Adequate Organ Function(AOF) value config
+# It varies for differet trials
 export PLATELETS_MIN=100
 export WBC_MIN=3
 export IRN_MAX=99
